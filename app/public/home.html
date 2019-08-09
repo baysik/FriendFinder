@@ -8,17 +8,30 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!-- google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Quicksand&display=swap" rel="stylesheet">
+
+    <style>
+      #title {
+        font-family: 'Open Sans Condensed', sans-serif;
+        letter-spacing: 3px;
+      }
+      p {
+        font-family: 'Quicksand', sans-serif;
+      }
+    </style>
   </head>
   <body>
       <!-- jumobtron -->
       <div class="jumbotron jumbotron-fluid">
           <div class="container">
-              <h1 class="display-3">Friend Finder</h1>
+              <h1 id="title" class="display-3">Friend Finder</h1>
               <hr class="my-2">
               <p class="lead">Answer a few basic questions.</p>
               <p class="lead">Then find the friend with the greatest compatibility</p>
               <p class="lead">
-                  <a class="btn btn-primary btn-lg" href="Jumbo action link" role="button">Go to survey</a>
+                  <a class="btn btn-outline-primary" href="/survey" role="button">Go to survey</a>
               </p>
           </div>
       </div>
