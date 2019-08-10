@@ -17,7 +17,8 @@
 
 
     <!-- jquery -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    
     <style>
         body {
             background-color: none;
@@ -33,6 +34,7 @@
             font-family: 'Open Sans Condensed', sans-serif;
         }
     </style>
+    
   </head>
   <body>
     <div class="container mt-3 mb-5">
@@ -44,11 +46,44 @@
         <input type='text' id='name' class='form-control' required>
         <h4>Link to Photo Image (required)</h4>
         <input type='text' id='photo' class='form-control' required>
+        
+        <!-- Modal -->
+        <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Your Match</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="container-fluid">
+                                        <h1 id="matchName">match name</h1>
+                                        <img id="matchImg" src="">
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary">Save</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <script>
+                        $('#exampleModal').on('show.bs.modal', event => {
+                            var button = $(event.relatedTarget);
+                            var modal = $(this);
+                            // Use above variables to manipulate the DOM
+                            
+                        });
+                        </script>
         <!-- Survey Questions start here -->
         <h3>Question 1</h3>
         <h4>You prefer to stay indoors over anything else.</h4>
-            <div class="form-group">
-                <select class="form-control" id="sel1">
+        <div class="form-group">
+            <select class="form-control" id="sel1">
                     <option value="1">1 (Strongly Disagree)</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -161,42 +196,43 @@
     <script type="text/javascript">
 
         $('#submit').click(function(){
-            // console.log($("input[name=inlineRadioOptions]:checked").val());
-            console.log($("#name").val())
-            console.log($("#photo").val())
-            console.log($("#sel1").val())
-            console.log($("#sel2").val())
-            console.log($("#sel3").val())
-            console.log($("#sel4").val())
-            console.log($("#sel5").val())
-            console.log($("#sel6").val())
-            console.log($("#sel7").val())
-            console.log($("#sel8").val())
-            console.log($("#sel9").val())
-            console.log($("#sel10").val())
-            let userData = {
-                name: $("#name").val(),
-                photo: $("#photo").val(),
-                scores: [
-                    $("#sel1").val(),
-                    $("#sel2").val(),
-                    $("#sel3").val(),
-                    $("#sel4").val(),
-                    $("#sel5").val(),
-                    $("#sel6").val(),
-                    $("#sel7").val(),
-                    $("#sel8").val(),
-                    $("#sel9").val(),
-                    $("#sel10").val()
-                ]
-            };
-
-            $.post("/api/friends", userData, function(data) {
-                $("#match-name").text(data.name);
-                $("#match-img").attr("src", data.photo);
-            })
-
-
+            if($("#name").val() === "" || $("#photo").val() === "") {
+                alert("Name or Image link is missing");
+            } else{
+                console.log($("#name").val())
+                console.log($("#photo").val())
+                console.log($("#sel1").val())
+                console.log($("#sel2").val())
+                console.log($("#sel3").val())
+                console.log($("#sel4").val())
+                console.log($("#sel5").val())
+                console.log($("#sel6").val())
+                console.log($("#sel7").val())
+                console.log($("#sel8").val())
+                console.log($("#sel9").val())
+                console.log($("#sel10").val())
+                let userData = {
+                    name: $("#name").val(),
+                    photo: $("#photo").val(),
+                    scores: [
+                        $("#sel1").val(),
+                        $("#sel2").val(),
+                        $("#sel3").val(),
+                        $("#sel4").val(),
+                        $("#sel5").val(),
+                        $("#sel6").val(),
+                        $("#sel7").val(),
+                        $("#sel8").val(),
+                        $("#sel9").val(),
+                        $("#sel10").val()
+                    ]
+                };
+                $.post("/api/friends", userData, function(data) {
+                    $("#matchName").text(data.name);
+                    $("#matchImg").attr("src", data.photo);
+                    $("#modelId").modal("toggle");
+                })
+            }
         })
     
 
@@ -204,7 +240,6 @@
 
     </script>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   </body>

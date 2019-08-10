@@ -18,6 +18,5 @@ require('./app/routing/htmlRoutes')(app);
 
 // listen to port
 app.listen(PORT, function() {
-    console.log(`app is listening to localhost:${PORT}`);
+    console.log(`app is listening to http://localhost:${PORT}`);
   });
-  
