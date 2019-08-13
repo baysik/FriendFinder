@@ -266,11 +266,11 @@
                             $("#sel10").val()
                         ]
                     };
-                    $.post("/api/friends", userData, function(data) {
+                    $.post("/api/friends", userData).done(function(data) {
                         $("#matchName").text(data.name);
                         $("#matchImg").attr("src", data.photo);
                         $("#modelId").modal("toggle");
-                        console.log(userData);
+                        console.log(data);
                     });
                 }
             });
