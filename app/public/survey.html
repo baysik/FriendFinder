@@ -1,258 +1,290 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
+    <head>
+        <title>Friend Finder</title>
+        <!-- Required meta tags -->
+        <meta charset="utf-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, shrink-to-fit=no"
+        />
 
-<head>
-    <title>Friend Finder</title>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!-- Bootstrap CSS -->
+        <link
+            rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+            crossorigin="anonymous"
+        />
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <!-- style.css -->
+        <link rel="stylesheet" href="assets/style.css" />
 
-    <!-- style.css -->
-    <link rel="stylesheet" href="assets/style.css">
+        <!-- google fonts -->
+        <link
+            href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Quicksand&display=swap"
+            rel="stylesheet"
+        />
 
-    <!-- google fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Quicksand&display=swap"
-        rel="stylesheet">
+        <!-- jquery -->
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"
+            integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+            crossorigin="anonymous"
+        ></script>
 
+        <style>
+            body {
+                background-color: none;
+            }
 
-    <!-- jquery -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"
-        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+            h2,
+            h3,
+            h4,
+            label {
+                font-family: "Quicksand", sans-serif;
+                margin-top: 1em;
+            }
 
-    <style>
-        body {
-            background-color: none;
-        }
+            h3 {
+                font-weight: bolder;
+            }
 
-        h2,
-        h3,
-        h4,
-        label {
-            font-family: 'Quicksand', sans-serif;
-            margin-top: 1em;
-        }
+            #title {
+                font-family: "Open Sans Condensed", sans-serif;
+            }
+        </style>
+    </head>
 
-        h3 {
-            font-weight: bolder;
-        }
+    <body>
+        <div class="container mt-3 mb-5">
+            <a class="btn btn-outline-primary" href="/" role="button"
+                >Go back</a
+            >
+            <h1 class="text-center" id="title">Survey Questions</h1>
+            <hr />
+            <!-- User Info -->
+            <h4 class="mt-3">Name (required)</h4>
+            <input type="text" id="name" class="form-control" required />
+            <h4>Link to Photo Image (required)</h4>
+            <input type="text" id="photo" class="form-control" required />
 
-        #title {
-            font-family: 'Open Sans Condensed', sans-serif;
-        }
-    </style>
-
-</head>
-
-<body>
-    <div class="container mt-3 mb-5">
-        <a class="btn btn-outline-primary" href="/" role="button">Go back</a>
-        <h1 class="text-center" id="title">Survey Questions</h1>
-        <hr>
-        <!-- User Info -->
-        <h4 class="mt-3">Name (required)</h4>
-        <input type='text' id='name' class='form-control' required>
-        <h4>Link to Photo Image (required)</h4>
-        <input type='text' id='photo' class='form-control' required>
-
-        <!-- Modal -->
-        <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
-            aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Your Match</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="container-fluid">
-                            <h1 id="matchName">match name</h1>
-                            <img id="matchImg" src="">
+            <!-- Modal -->
+            <div
+                class="modal fade"
+                id="modelId"
+                tabindex="-1"
+                role="dialog"
+                aria-labelledby="modelTitleId"
+                aria-hidden="true"
+            >
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Your Match</h5>
+                            <button
+                                type="button"
+                                class="close"
+                                data-dismiss="modal"
+                                aria-label="Close"
+                            >
+                                <span aria-hidden="true">&times;</span>
+                            </button>
                         </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <div class="modal-body">
+                            <div class="container-fluid">
+                                <h1 id="matchName"></h1>
+                                <img id="matchImg" src="" />
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button
+                                type="button"
+                                class="btn btn-secondary"
+                                data-dismiss="modal"
+                            >
+                                Close
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
+
+            <script>
+                $("#exampleModal").on("show.bs.modal", event => {
+                    var button = $(event.relatedTarget);
+                    var modal = $(this);
+                    // Use above variables to manipulate the DOM
+                });
+            </script>
+            <!-- Survey Questions start here -->
+            <h3>Question 1</h3>
+            <h4>You prefer to stay indoors over anything else.</h4>
+            <div class="form-group">
+                <select class="form-control" id="sel1">
+                    <option value="1">1 (Strongly Disagree)</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5 (Strongly Agree)</option>
+                </select>
+            </div>
+            <h3>Question 2</h3>
+            <h4>Reading a book is one of your favorite hobbies.</h4>
+            <div class="form-group">
+                <select class="form-control" id="sel2">
+                    <option value="1">1 (Strongly Disagree)</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5 (Strongly Agree)</option>
+                </select>
+            </div>
+            <h3>Question 3</h3>
+            <h4>Socializing is a waste of time.</h4>
+            <div class="form-group">
+                <select class="form-control" id="sel3">
+                    <option value="1">1 (Strongly Disagree)</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5 (Strongly Agree)</option>
+                </select>
+            </div>
+            <h3>Question 4</h3>
+            <h4>You use social media often.</h4>
+            <div class="form-group">
+                <select class="form-control" id="sel4">
+                    <option value="1">1 (Strongly Disagree)</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5 (Strongly Agree)</option>
+                </select>
+            </div>
+            <h3>Question 5</h3>
+            <h4>You watch streams on twitch.tv</h4>
+            <div class="form-group">
+                <select class="form-control" id="sel5">
+                    <option value="1">1 (Strongly Disagree)</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5 (Strongly Agree)</option>
+                </select>
+            </div>
+            <h3>Question 6</h3>
+            <h4>You prefer to go out to eat.</h4>
+            <div class="form-group">
+                <select class="form-control" id="sel6">
+                    <option value="1">1 (Strongly Disagree)</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5 (Strongly Agree)</option>
+                </select>
+            </div>
+            <h3>Question 7</h3>
+            <h4>You dislike fast foods.</h4>
+            <div class="form-group">
+                <select class="form-control" id="sel7">
+                    <option value="1">1 (Strongly Disagree)</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5 (Strongly Agree)</option>
+                </select>
+            </div>
+            <h3>Question 8</h3>
+            <h4>You prefer dogs over cats.</h4>
+            <div class="form-group">
+                <select class="form-control" id="sel8">
+                    <option value="1">1 (Strongly Disagree)</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5 (Strongly Agree)</option>
+                </select>
+            </div>
+            <h3>Question 9</h3>
+            <h4>You enjoy excersize</h4>
+            <div class="form-group">
+                <select class="form-control" id="sel9">
+                    <option value="1">1 (Strongly Disagree)</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5 (Strongly Agree)</option>
+                </select>
+            </div>
+            <h3>Question 10</h3>
+            <h4>You enjoy eating healthy foods</h4>
+            <div class="form-group">
+                <select class="form-control" id="sel10">
+                    <option value="1">1 (Strongly Disagree)</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5 (Strongly Agree)</option>
+                </select>
+            </div>
+            <button type="button" id="submit" class="btn btn-outline-primary">
+                Submit
+            </button>
         </div>
-
-        <script>
-            $('#exampleModal').on('show.bs.modal', event => {
-                var button = $(event.relatedTarget);
-                var modal = $(this);
-                // Use above variables to manipulate the DOM
-
+        <!-- Optional JavaScript -->
+        <script type="text/javascript">
+            $("#submit").click(function() {
+                if ($("#name").val() === "" || $("#photo").val() === "") {
+                    alert("Name or Image link is missing");
+                } else {
+                    console.log($("#name").val());
+                    console.log($("#photo").val());
+                    console.log($("#sel1").val());
+                    console.log($("#sel2").val());
+                    console.log($("#sel3").val());
+                    console.log($("#sel4").val());
+                    console.log($("#sel5").val());
+                    console.log($("#sel6").val());
+                    console.log($("#sel7").val());
+                    console.log($("#sel8").val());
+                    console.log($("#sel9").val());
+                    console.log($("#sel10").val());
+                    let userData = {
+                        name: $("#name").val(),
+                        photo: $("#photo").val(),
+                        scores: [
+                            $("#sel1").val(),
+                            $("#sel2").val(),
+                            $("#sel3").val(),
+                            $("#sel4").val(),
+                            $("#sel5").val(),
+                            $("#sel6").val(),
+                            $("#sel7").val(),
+                            $("#sel8").val(),
+                            $("#sel9").val(),
+                            $("#sel10").val()
+                        ]
+                    };
+                    $.post("/api/friends", userData, function(data) {
+                        $("#matchName").text(data.name);
+                        $("#matchImg").attr("src", data.photo);
+                        $("#modelId").modal("toggle");
+                        console.log(userData);
+                    });
+                }
             });
         </script>
-        <!-- Survey Questions start here -->
-        <h3>Question 1</h3>
-        <h4>You prefer to stay indoors over anything else.</h4>
-        <div class="form-group">
-            <select class="form-control" id="sel1">
-                <option value="1">1 (Strongly Disagree)</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5 (Strongly Agree)</option>
-            </select>
-        </div>
-        <h3>Question 2</h3>
-        <h4>Reading a book is one of your favorite hobbies.</h4>
-        <div class="form-group">
-            <select class="form-control" id="sel2">
-                <option value="1">1 (Strongly Disagree)</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5 (Strongly Agree)</option>
-            </select>
-        </div>
-        <h3>Question 3</h3>
-        <h4>Socializing is a waste of time.</h4>
-        <div class="form-group">
-            <select class="form-control" id="sel3">
-                <option value="1">1 (Strongly Disagree)</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5 (Strongly Agree)</option>
-            </select>
-        </div>
-        <h3>Question 4</h3>
-        <h4>You use social media often.</h4>
-        <div class="form-group">
-            <select class="form-control" id="sel4">
-                <option value="1">1 (Strongly Disagree)</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5 (Strongly Agree)</option>
-            </select>
-        </div>
-        <h3>Question 5</h3>
-        <h4>You watch streams on twitch.tv</h4>
-        <div class="form-group">
-            <select class="form-control" id="sel5">
-                <option value="1">1 (Strongly Disagree)</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5 (Strongly Agree)</option>
-            </select>
-        </div>
-        <h3>Question 6</h3>
-        <h4>You prefer to go out to eat.</h4>
-        <div class="form-group">
-            <select class="form-control" id="sel6">
-                <option value="1">1 (Strongly Disagree)</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5 (Strongly Agree)</option>
-            </select>
-        </div>
-        <h3>Question 7</h3>
-        <h4>You dislike fast foods.</h4>
-        <div class="form-group">
-            <select class="form-control" id="sel7">
-                <option value="1">1 (Strongly Disagree)</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5 (Strongly Agree)</option>
-            </select>
-        </div>
-        <h3>Question 8</h3>
-        <h4>You prefer dogs over cats.</h4>
-        <div class="form-group">
-            <select class="form-control" id="sel8">
-                <option value="1">1 (Strongly Disagree)</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5 (Strongly Agree)</option>
-            </select>
-        </div>
-        <h3>Question 9</h3>
-        <h4>You enjoy excersize</h4>
-        <div class="form-group">
-            <select class="form-control" id="sel9">
-                <option value="1">1 (Strongly Disagree)</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5 (Strongly Agree)</option>
-            </select>
-        </div>
-        <h3>Question 10</h3>
-        <h4>You enjoy eating healthy foods</h4>
-        <div class="form-group">
-            <select class="form-control" id="sel10">
-                <option value="1">1 (Strongly Disagree)</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5 (Strongly Agree)</option>
-            </select>
-        </div>
-        <button type="button" id="submit" class="btn btn-outline-primary">Submit</button>
-    </div>
-    <!-- Optional JavaScript -->
-    <script type="text/javascript">
-        $('#submit').click(function () {
-            if ($("#name").val() === "" || $("#photo").val() === "") {
-                alert("Name or Image link is missing");
-            } else {
-                console.log($("#name").val())
-                console.log($("#photo").val())
-                console.log($("#sel1").val())
-                console.log($("#sel2").val())
-                console.log($("#sel3").val())
-                console.log($("#sel4").val())
-                console.log($("#sel5").val())
-                console.log($("#sel6").val())
-                console.log($("#sel7").val())
-                console.log($("#sel8").val())
-                console.log($("#sel9").val())
-                console.log($("#sel10").val())
-                let userData = {
-                    name: $("#name").val(),
-                    photo: $("#photo").val(),
-                    scores: [
-                        $("#sel1").val(),
-                        $("#sel2").val(),
-                        $("#sel3").val(),
-                        $("#sel4").val(),
-                        $("#sel5").val(),
-                        $("#sel6").val(),
-                        $("#sel7").val(),
-                        $("#sel8").val(),
-                        $("#sel9").val(),
-                        $("#sel10").val()
-                    ]
-                };
-                $.post("/api/friends", userData, function (data) {
-                    $("#matchName").text(data.name);
-                    $("#matchImg").attr("src", data.photo);
-                    $("#modelId").modal("toggle");
-                    console.log(data.name);
-                })
-            }
-        })
-    </script>
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
-    </script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
-    </script>
-</body>
-
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"
+        ></script>
+        <script
+            src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"
+        ></script>
+    </body>
 </html>
